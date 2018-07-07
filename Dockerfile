@@ -23,10 +23,10 @@ RUN apt-get update \
 # "Former versions of this post advised to bind-mount the docker binary from
 # the host to the container. This is not reliable anymore, because the Docker
 # Engine is no longer distributed as (almost) static libraries."
-ARG docker_version=1.11.2
+# ARG docker_version=1.7.1 ( not working in docker version 1.7.1)
 RUN curl -sSL https://get.docker.com/ | sh && \
     apt-get purge -y docker-engine && \
-    apt-get install docker-engine=${docker_version}-0~jessie
+    apt-get install docker-engine=1.7.1-0~jessie
 
 # Make sure jenkins user has docker privileges
 RUN usermod -aG docker jenkins
